@@ -46,6 +46,9 @@ def forbidden(error):
 
 @app.before_request
 def before_request():
+    """Sets requirements to be fullfilled
+    before each request is processed
+    """
     excluded_paths = ['/api/v1/status/',
                       '/api/v1/unauthorized/',
                       '/api/v1/forbidden/']
