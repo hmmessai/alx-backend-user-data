@@ -8,6 +8,8 @@ class BasicAuth(Auth):
     """Represents BasicAuth
     """
     def extract_base64_authorization_header(self, authorization_header: str) -> str:
+        """Extracts the base64 authorization header
+        """
         if authorization_header and type(authorization_header) == str:
             auth_scheme = authorization_header.split(' ')
             if auth_scheme[0] == 'Basic':
