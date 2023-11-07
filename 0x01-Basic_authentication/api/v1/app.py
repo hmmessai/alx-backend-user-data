@@ -45,9 +45,8 @@ def forbidden(error):
 
 
 @app.before_request
-def before_request():
-    """Sets requirements to be fullfilled
-    before each request is processed
+def user_authentication():
+    """Authenticates a user before processing a request
     """
     excluded_paths = ['/api/v1/status/',
                       '/api/v1/unauthorized/',
