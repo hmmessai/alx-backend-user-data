@@ -3,6 +3,7 @@
 """
 from api.v1.auth.auth import Auth
 import base64
+import re
 
 
 class BasicAuth(Auth):
@@ -35,3 +36,18 @@ class BasicAuth(Auth):
                 return None
             return decoded_value
         return None
+
+    def extract_user_credentials(self,
+                                 decode_base64_authorization_header: str
+                                 ) -> (str, str):
+        """Extracts user email and password from decoded value
+        """
+        dcd_b64_auth_head = decode_base64_authorization_header
+        if dcd_b64_auth_head and type(dcd_b64_auth_head) == str:
+            if ':' in dcd_b64_auth_head:
+                credentials = dcd_b64_auth_head.split(':')
+                user_email = credentials[0]
+                user_pwd = credentials[1]
+                return (user_email, user_pwd)
+            return (None, None)
+        return (None, None)
