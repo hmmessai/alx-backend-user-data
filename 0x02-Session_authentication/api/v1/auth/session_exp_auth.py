@@ -37,5 +37,5 @@ class SessionExpAuth(SessionAuth):
                 return user_session[session_id]['user_id']
             createdAt = user_session[session_id]['created_at']
             if createdAt:
-                if createdAt.timedelta()
+                if createdAt.timedelta():
                     return user_session[session_id]['user_id']
