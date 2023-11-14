@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Defines User authentication and Auth clas
 """
-from sqlalchemy.exc import NoResultFound
-from user import User
-from db import DB
 import bcrypt
+from uuid import uuid4
+from sqlalchemy.orm.exc import NoResultFound
+from typing import (TypeVar,Union)
+from db import DB
+from user import User
 
+U = TypeVar(User)
 
 def _hash_password(password: str) -> bytes:
     """Hashes a password
