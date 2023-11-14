@@ -41,19 +41,3 @@ class DB:
             self._session.rollback()
             user = None
         return user
-
-    def find_user_by(self, **kwargs) -> User:
-        """Finds user with the given information
-        """
-        result =  self._session.query(User).filter_by(**kwargs).first()
-        if result is None:
-            raise NoResultFound
-        else:
-            return result
-
-    def update_user(self, user_id, **kwargs) -> None:
-        """Updates user with given id with the given arguments
-        """
-        user = self.find_user_by(id=user_id)
-        for k, v in kwargs.items():
-            user.k = v
